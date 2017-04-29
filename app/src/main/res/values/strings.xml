@@ -1,3 +1,26 @@
 <resources>
-    <string name="app_name">LostAndFound</string>
+    <string name="app_name">Penn State Lost and Found</string>
+
+    <!-- Main menu screen -->
+    <string name="inventory">Our Inventory</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="links">Links</string>
+
+    <!--Inventory screen -->
+    <string name="inv_add">Add New Entry</string>
+
+    <!--Contact screen-->
+    <string name="title">Contact PSU Lost and Found!</string>
+    <string name="name">Name:</string>
+    <string name="subj">Subject:</string>
+    <string name="msg">Message:</string>
+    <string name="send">Send</string>
+    <string name="phone">Phone number: 814-898-6101</string>
+
+    <!--Add screen-->
+    <string name="item_name">Item name:</string>
+    <string name="item_type">Item type:</string>
+    <string name="contact_info">Contact info:</string>
+    <string name="desc">Description</string>
+    <string name="add">Add Item</string>
 </resources>
