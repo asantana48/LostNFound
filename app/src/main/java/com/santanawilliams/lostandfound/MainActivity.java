@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
     private SoundManager sm;
@@ -13,6 +15,15 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         sm = new SoundManager(this);
+
+        //Listener for Nittany Lion Picture
+        final ImageView lionPic = (ImageView) findViewById(R.id.lionImg);
+        lionPic.setOnLongClickListener(new View.OnLongClickListener(){
+            public boolean onLongClick(View v){
+                lionPic.setImageResource(R.mipmap.psu_lion_red);
+                return true;
+            }
+        });
     }
 
     public void onAnyClick(Class t) {

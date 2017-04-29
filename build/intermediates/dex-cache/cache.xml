@@ -2,22 +2,22 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="C:\Users\andre\Documents\GitHub\LostNFound\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        is-multidex="true"
+        jar="S:\Downloads\LostNFound\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="5f00f3527a56037a462e5e5b607156ef9e4b7a71">
-        <dex dex="C:\Users\andre\Documents\GitHub\LostNFound\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_d3484223b191ef17b58aff569690127bd8acc5d7.jar" />
+        sha1="45965ce80aeb0e70d2bb5de08711a44ee9509280">
+        <dex dex="S:\Downloads\LostNFound\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_222683709149473a73f18cfe03f63cd0849788bd\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="C:\Users\andre\Documents\GitHub\LostNFound\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        is-multidex="true"
+        jar="S:\Downloads\LostNFound\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="94da3ea6d0ffc5ceacdb65b31e83628bee80d720">
-        <dex dex="C:\Users\andre\Documents\GitHub\LostNFound\app\build\intermediates\pre-dexed\debug\instant-run_5c2feec5a04a18e60dcbbae888ea42fe0430ec46.jar" />
+        sha1="05c8599f9e6173faf4f38677a40e4692ff6bc1d8">
+        <dex dex="S:\Downloads\LostNFound\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_5befaed05b1945ce51de862498ec6713be1eaa2c\classes.dex" />
     </item>
 
 </items>
