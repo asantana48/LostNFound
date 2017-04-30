@@ -21,7 +21,6 @@ public class MainActivity extends Activity {
         lionPic.setOnLongClickListener(new View.OnLongClickListener(){
             public boolean onLongClick(View v){
                 lionPic.setImageResource(R.mipmap.psu_lion_red);
-                sm.playRoar();
                 return true;
             }
         });
