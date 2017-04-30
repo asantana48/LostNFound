@@ -34,7 +34,7 @@ public class LostDB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String table = "CREATE TABLE" + TBLNAME + " (" +
+        String table = "CREATE TABLE " + TBLNAME + " (" +
                 ID + " INTEGER PRIMARY KEY, " +
                 NAME + " TEXT, " +
                 TYPE + " TEXT, " +
@@ -65,20 +65,53 @@ public class LostDB extends SQLiteOpenHelper {
         db.insert(TBLNAME, null, itemRow);
     }
 
+    public void deleteItem(Item itemToBeDeleted, String condition) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "DELETE FROM " + TBLNAME  + " WHERE ";
+        if (condition.equals("id")) {
+            query += ID + " = " + itemToBeDeleted.getId();
+        }
+        else if (condition.equals("name")) {
+            query += NAME + " = " + itemToBeDeleted.getName();
+
+        }
+        else if(condition.equals("type")) {
+            query += TYPE + " = " + itemToBeDeleted.getType();
+        }
+        else if (condition.equals("contact")) {
+            query += CONTACT + " = " + itemToBeDeleted.getContactInfo();
+        }
+        else if (condition.equals("description")) {
+            query += DESCRIPTION + " = " + itemToBeDeleted.getDescription();
+        }
+        else {
+            return;
+        }
+    }
+
     public ArrayList<Item> getAllItems() {
-        ArrayList<Item> items = new ArrayList<>();
+        ArrayList<Item> itemList = new ArrayList<>();
         String query = "SELECT * FROM " + TBLNAME;
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor curse = db.rawQuery(query, null);
-        while(curse.moveToNext()) {
-            Item i = new Item( curse.getInt(0),
-                    curse.getString(1),
-                    curse.getString(2),
-                    curse.getString(3),
-                    curse.getString(4));
-            items.add(i);
+        if (curse.moveToFirst()) {
+            do {
+                Item i = new Item(curse.getInt(0),
+                        curse.getString(1),
+                        curse.getString(2),
+                        curse.getString(3),
+                        curse.getString(4));
+                itemList.add(i);
+            } while(curse.moveToNext());
         }
-        return items;
+        return itemList;
+    }
+
+    public void refreshTable() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "DROP TABLE IF EXISTS " + TBLNAME;
+        db.execSQL(query);
+        onCreate(db);
     }
 }

@@ -104,7 +104,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/addBtn"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="onAdd" />
 
 
 </RelativeLayout>
