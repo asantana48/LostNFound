@@ -23,4 +23,13 @@
     <string name="contact_info">Contact info:</string>
     <string name="desc">Description</string>
     <string name="add">Add Item</string>
+    <!-- Add screen: item types -->
+    <string-array name="types">
+        <item>Office Supplies</item>
+        <item>Electronics</item>
+        <item>Jewelry</item>
+        <item>Clothing</item>
+        <item>Miscellaneous</item>
+    </string-array>
+
 </resources>
