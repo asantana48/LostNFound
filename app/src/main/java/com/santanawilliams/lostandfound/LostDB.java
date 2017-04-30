@@ -72,10 +72,9 @@ public class LostDB extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor curse = db.rawQuery(query, null);
         while(curse.moveToNext()) {
-            Item.ItemType type = Item.ItemType.valueOf(curse.getString(2));
             Item i = new Item( curse.getInt(0),
                     curse.getString(1),
-                    type,
+                    curse.getString(2),
                     curse.getString(3),
                     curse.getString(4));
             items.add(i);
