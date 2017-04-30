@@ -24,11 +24,6 @@ public class InventoryAdd extends Activity {
 
         initComponents();
         setSpinnerAdapter();
-
-        ArrayList<Item> myList = db.getAllItems();
-        for (Item i: myList) {
-            System.out.println(i.getName());
-        }
     }
 
     private void initComponents() {
@@ -63,6 +58,7 @@ public class InventoryAdd extends Activity {
             Toast.makeText(this, errorMsg, Toast.LENGTH_SHORT).show();
         return isEmpty;
     }
+
     public void onAdd(View v) {
         if (checkForEmpties())
             return;

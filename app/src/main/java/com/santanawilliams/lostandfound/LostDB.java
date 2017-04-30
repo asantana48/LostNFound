@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -35,7 +36,7 @@ public class LostDB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String table = "CREATE TABLE " + TBLNAME + " (" +
-                ID + " INTEGER PRIMARY KEY, " +
+                ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 NAME + " TEXT, " +
                 TYPE + " TEXT, " +
                 CONTACT + " TEXT, " +
@@ -56,41 +57,37 @@ public class LostDB extends SQLiteOpenHelper {
         itemCount++;
 
         ContentValues itemRow = new ContentValues();
-        itemRow.put(ID, itemCount);
         itemRow.put(NAME, newItem.getName());
         itemRow.put(TYPE, newItem.getType().toString());
         itemRow.put(CONTACT, newItem.getContactInfo());
         itemRow.put(DESCRIPTION, newItem.getDescription());
 
         db.insert(TBLNAME, null, itemRow);
+        db.close();
     }
 
     public void deleteItem(Item itemToBeDeleted, String condition) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "DELETE FROM " + TBLNAME  + " WHERE ";
         if (condition.equals("id")) {
-            query += ID + " = " + itemToBeDeleted.getId();
+            db.delete(TBLNAME, ID + "= ?", new String[]{String.valueOf(itemToBeDeleted.getId())});
         }
         else if (condition.equals("name")) {
-            query += NAME + " = " + itemToBeDeleted.getName();
-
+            db.delete(TBLNAME, NAME + "= ?", new String[]{itemToBeDeleted.getName()});
         }
         else if(condition.equals("type")) {
-            query += TYPE + " = " + itemToBeDeleted.getType();
+            db.delete(TBLNAME, TYPE + "= ?", new String[]{itemToBeDeleted.getType()});
         }
         else if (condition.equals("contact")) {
-            query += CONTACT + " = " + itemToBeDeleted.getContactInfo();
+            db.delete(TBLNAME, CONTACT + "= ?", new String[]{itemToBeDeleted.getContactInfo()});
         }
         else if (condition.equals("description")) {
-            query += DESCRIPTION + " = " + itemToBeDeleted.getDescription();
+            db.delete(TBLNAME, CONTACT + "= ?", new String[]{itemToBeDeleted.getDescription()});
         }
-        else {
-            return;
-        }
+        db.close();
     }
 
-    public ArrayList<Item> getAllItems() {
-        ArrayList<Item> itemList = new ArrayList<>();
+    public List<Item> getAllItems() {
+        List<Item> itemList = new ArrayList<>();
         String query = "SELECT * FROM " + TBLNAME;
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -105,7 +102,11 @@ public class LostDB extends SQLiteOpenHelper {
                 itemList.add(i);
             } while(curse.moveToNext());
         }
+        curse.close();
+        db.close();
+
         return itemList;
+
     }
 
     public void refreshTable() {
