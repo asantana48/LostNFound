@@ -11,6 +11,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class InventoryAdd extends Activity {
+    private SoundManager sm;
     private EditText nameET;
     private EditText contactET;
     private EditText descriptionET;
@@ -21,7 +22,6 @@ public class InventoryAdd extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory_add);
-
         initComponents();
         setSpinnerAdapter();
     }
@@ -31,6 +31,7 @@ public class InventoryAdd extends Activity {
         contactET = (EditText) findViewById(R.id.contactInput);
         descriptionET = (EditText) findViewById(R.id.descriptionInput);
         typeSP = (Spinner) findViewById(R.id.typeSpinner);
+        sm = new SoundManager(this);
         db = new LostDB(this);
     }
 
@@ -69,5 +70,8 @@ public class InventoryAdd extends Activity {
         item.setDescription(descriptionET.getText().toString());
         item.setType(typeSP.getSelectedItem().toString());
         db.insertItem(item);
+
+        sm.playStapler();
+        finish();
     }
 }
