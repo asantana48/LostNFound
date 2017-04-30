@@ -44,12 +44,27 @@
         android:id="@+id/linksBtn"
         android:onClick="onLinksClick" />
 
-    <ImageView
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:src="@mipmap/psu_lion"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/lionImg" />
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:src="@mipmap/psu_lion_red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/redLionImg" />
+
+        <ImageView
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:src="@mipmap/psu_lion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/blueLionImg" />
+    </RelativeLayout>
+
 </LinearLayout>
