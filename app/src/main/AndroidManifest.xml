@@ -18,7 +18,7 @@
         <activity android:name=".Inventory" />
         <activity android:name=".Contact" />
         <activity android:name=".InventoryAdd" />
-        <activity android:name=".Links">
+        <activity android:name=".Links" android:label="">
             <intent-filter>
                 <action android:name="android.intent.action.SENDTO" />
                 <data android:scheme="mailto" />

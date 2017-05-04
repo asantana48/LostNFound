@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item android:title="Police"
+        android:id="@+id/policeActionBar"
+        android:showAsAction="always"
+        />
+    <item android:title="Policies and Procedures"
+        android:id="@+id/policiesActionBar"
+        android:showAsAction="always"
+        />
+
     <item android:title="Background Color"
         android:id="@+id/changeBackground">
         <menu >
@@ -10,6 +19,18 @@
                 android:id="@+id/backgroundGreen" />
             <item android:title="Red"
                 android:id="@+id/backgroundRed" />
+        </menu>
+    </item>
+
+    <item android:title="Font"
+        android:id="@+id/changeFont">
+        <menu >
+            <item android:title="Consolas"
+                android:id="@+id/consolas" />
+            <item android:title="Times New Roman"
+                android:id="@+id/timesNewRoman" />
+            <item android:title="Arial"
+                android:id="@+id/arial" />
         </menu>
     </item>
 </menu>
