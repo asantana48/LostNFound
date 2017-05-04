@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Background Color"
+        android:id="@+id/changeBackground">
+        <menu >
+            <item android:title="Blue"
+                android:id="@+id/backgroundBlue" />
+            <item android:title="Green"
+                android:id="@+id/backgroundGreen" />
+            <item android:title="Red"
+                android:id="@+id/backgroundRed" />
+        </menu>
+    </item>
+</menu>
