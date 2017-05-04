@@ -2,7 +2,15 @@
 <html>
     <head>
         <title>Links Page</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            function changeSource(){
+                var iframe = document.getElementById("container");
+                iframe.src = Android.getURL();
+            }
+        </script>
     </head>
-    <iframe name="container">
+
+    <iframe id="container" style="position:fixed; width:100%; height:100%; border:none;" >
     </iframe>
 </html>

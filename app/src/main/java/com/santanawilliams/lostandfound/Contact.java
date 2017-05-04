@@ -1,5 +1,10 @@
 package com.santanawilliams.lostandfound;
 
+/*
+* The Contact activity class
+* Parent: MainActivity
+ */
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -9,11 +14,13 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
 public class Contact extends Activity {
     private static final String EMAIL = "ars5964@psu.edu";
-    private EditText nameTV;
-    private EditText subjectTV;
-    private EditText msgTV;
+
+    private EditText nameET;
+    private EditText subjectET;
+    private EditText messageET;
     private CheckBox urgentCB;
 
     private SoundManager sm;
@@ -25,26 +32,29 @@ public class Contact extends Activity {
         initComponents();
     }
 
+    // Initialize components
     public void initComponents() {
-        nameTV = (EditText) findViewById(R.id.nameInput);
-        subjectTV = (EditText) findViewById(R.id.subjectInput);
-        msgTV = (EditText) findViewById(R.id.messageInput);
+        nameET = (EditText) findViewById(R.id.nameInput);
+        subjectET = (EditText) findViewById(R.id.subjectInput);
+        messageET = (EditText) findViewById(R.id.messageInput);
         urgentCB = (CheckBox) findViewById(R.id.urgentChk);
         sm = new SoundManager(this);
     }
 
+    // Search EditTexts to make sure they aren't empty
     public boolean searchForEmpties() {
         String errorMsg = "";
         boolean isEmpty = false;
-        if (nameTV.getText().toString().matches("")) {
+        // If name
+        if (nameET.getText().toString().matches("")) {
             errorMsg = "Please enter your name.";
             isEmpty = true;
         }
-        else if (subjectTV.getText().toString().matches("")) {
+        else if (subjectET.getText().toString().matches("")) {
             errorMsg = "Please enter a subject for your message.";
             isEmpty = true;
         }
-        else if (msgTV.getText().toString().matches("")) {
+        else if (messageET.getText().toString().matches("")) {
             errorMsg = "Please enter a message";
             isEmpty = true;
         }
@@ -54,22 +64,30 @@ public class Contact extends Activity {
         return isEmpty;
     }
 
-
+    // OnClick function for Send button
     public void sendClick(View v){
+        // Make sure we have the necessary components
         if (searchForEmpties())
             return;
 
-        sm.playStapler();
+        // Get the subject and message
+        StringBuilder subject = new StringBuilder(subjectET.getText().toString());
+        StringBuilder message = new StringBuilder(messageET.getText().toString());
 
-        StringBuilder subject = new StringBuilder(subjectTV.getText().toString());
-        StringBuilder message = new StringBuilder(msgTV.getText().toString());
+        // Add urgent to subject if Urgent was checked
         if (urgentCB.isChecked())
             subject.insert(0, "URGENT: ");
-        message.append("\n\n-" + nameTV.getText().toString());
 
+        // Append name to message
+        message.append("\n\n-" + nameET.getText().toString());
+
+        sm.playStapler();
+
+        // Send the e-mail
         composeEmail(new String[]{EMAIL}, subject.toString(), message.toString());
     }
 
+    // Launch an implicit intent that supplies a mail app with the provided information
     // Source: https://developer.android.com/guide/components/intents-common.html#Email
     public void composeEmail(String[] addresses, String subject, String message) {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
@@ -77,12 +95,19 @@ public class Contact extends Activity {
         // Only email apps should handle this
         intent.setData(Uri.parse("mailto:"));
 
+        // Add email to To: line
         intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+        // Add subject
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        // Add message
         intent.putExtra(Intent.EXTRA_TEXT, message);
 
+        // If user has a mail app, launch
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
+        }
+        else {
+            Toast.makeText(this, "We were unable to send the e-mail at this time.", Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.santanawilliams.lostandfound;
 
 /**
- * Created by andre on 4/29/2017.
+ * Item class
  */
 
 public class Item {
@@ -27,12 +27,14 @@ public class Item {
         description = d;
     }
 
+    // Setters
     public void setID(int i) { id = i; }
     public void setName(String s) { name = s;}
     public void setType(String t) { type = t;}
     public void setContactInfo(String s) { contactInfo = s;}
     public void setDescription(String s) { description = s;}
 
+    // Getters
     public int getId() { return id; }
     public String getName() { return name; }
     public String getType() { return type; }

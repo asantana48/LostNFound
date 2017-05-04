@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="Police"
-        android:id="@+id/policeActionBar"
+    <item android:title="Behrend Wiki"
+        android:id="@+id/behrendTab"
         android:showAsAction="always"
         />
-    <item android:title="Policies and Procedures"
-        android:id="@+id/policiesActionBar"
+    <item android:title="Airport Lost n Found"
+        android:id="@+id/airportTab"
         android:showAsAction="always"
         />
 
-    <item item android:title="Frame Color"
+    <item android:title="Frame Color"
         android:id="@+id/changeBackground">
         <menu >
             <item android:title="Blue"
@@ -21,15 +21,4 @@
         </menu>
     </item>
 
-    <item android:title="Font"
-        android:id="@+id/changeFont">
-        <menu >
-            <item android:title="Consolas"
-                android:id="@+id/consolas" />
-            <item android:title="Times New Roman"
-                android:id="@+id/timesNewRoman" />
-            <item android:title="Arial"
-                android:id="@+id/arial" />
-        </menu>
-    </item>
 </menu>

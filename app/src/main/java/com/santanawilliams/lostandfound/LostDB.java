@@ -1,5 +1,9 @@
 package com.santanawilliams.lostandfound;
 
+/*
+* Database handler class
+ */
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,10 +13,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- * Created by andre on 4/29/2017.
- */
 
 public class LostDB extends SQLiteOpenHelper {
     // Database constants
@@ -27,8 +27,7 @@ public class LostDB extends SQLiteOpenHelper {
     private static final String CONTACT = "contact_info";
     private static final String DESCRIPTION = "description";
 
-    // Table primary key
-    private int itemCount;
+
     public LostDB(Context c) {
         super(c, DBNAME, null, VERSION);
     }
@@ -42,7 +41,6 @@ public class LostDB extends SQLiteOpenHelper {
                 CONTACT + " TEXT, " +
                 DESCRIPTION + " TEXT);";
         db.execSQL(table);
-        itemCount = 0;
     }
 
     @Override
@@ -52,20 +50,24 @@ public class LostDB extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    // Insert an Item into the database
     public void insertItem(Item newItem) {
         SQLiteDatabase db = this.getWritableDatabase();
-        itemCount++;
 
+        // Use ContentValue key-value container for convenience
         ContentValues itemRow = new ContentValues();
         itemRow.put(NAME, newItem.getName());
         itemRow.put(TYPE, newItem.getType().toString());
         itemRow.put(CONTACT, newItem.getContactInfo());
         itemRow.put(DESCRIPTION, newItem.getDescription());
 
+        // Insert the ContentValue
         db.insert(TBLNAME, null, itemRow);
         db.close();
     }
 
+    // Delete an Item from the database
+    // Condition specifies which part of the item should be referenced for deletion in the database
     public void deleteItem(Item itemToBeDeleted, String condition) {
         SQLiteDatabase db = this.getWritableDatabase();
         if (condition.equals("id")) {
@@ -86,12 +88,17 @@ public class LostDB extends SQLiteOpenHelper {
         db.close();
     }
 
+    // Get a List of all the items in the database
     public List<Item> getAllItems() {
+        // List to be returned
         List<Item> itemList = new ArrayList<>();
-        String query = "SELECT * FROM " + TBLNAME;
 
         SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT * FROM " + TBLNAME;
         Cursor curse = db.rawQuery(query, null);
+
+        // If database has entries in it, iterate through the database
         if (curse.moveToFirst()) {
             do {
                 Item i = new Item(curse.getInt(0),
@@ -102,6 +109,7 @@ public class LostDB extends SQLiteOpenHelper {
                 itemList.add(i);
             } while(curse.moveToNext());
         }
+
         curse.close();
         db.close();
 
@@ -109,6 +117,7 @@ public class LostDB extends SQLiteOpenHelper {
 
     }
 
+    // Drop the table and construct a new one
     public void refreshTable() {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "DROP TABLE IF EXISTS " + TBLNAME;

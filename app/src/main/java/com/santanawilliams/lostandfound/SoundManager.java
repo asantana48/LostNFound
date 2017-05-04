@@ -3,13 +3,6 @@ package com.santanawilliams.lostandfound;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
-import android.util.AttributeSet;
-import android.util.SparseIntArray;
-import android.widget.Button;
-
-/**
- * Created by andre on 4/29/2017.
- */
 
 public class SoundManager {
     private Context context;
