@@ -12,7 +12,7 @@
     tools:context="com.santanawilliams.lostandfound.Inventory">
 
     <Button
-        android:text="@string/inv_add"
+        android:text="@string/add_title"
         android:layout_width="match_parent"
         android:id="@+id/addBtn"
         android:textSize="24sp"

@@ -19,6 +19,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="20dp">
 
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -76,6 +77,41 @@
                 android:id="@+id/contactInput" />
 
         </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:text="@string/stat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:id="@+id/textView12" />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:text="@string/lost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioLost"
+                    android:layout_weight="1" />
+
+                <RadioButton
+                    android:text="@string/found"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioFound"
+                    android:layout_weight="1" />
+
+            </RadioGroup>
+
+        </TableRow>
+
     </TableLayout>
 
 
@@ -95,7 +131,7 @@
         android:id="@+id/descriptionInput"
         android:gravity="top"
         android:layout_height="280dp"
-        android:layout_below="@+id/textView5"
+        android:layout_below="@+id/inputLayout"
         android:layout_alignParentStart="true" />
 
     <Button

@@ -12,7 +12,7 @@
     tools:context="com.santanawilliams.lostandfound.MainActivity">
 
     <Button
-        android:text="@string/inventory"
+        android:text="@string/inv_lost"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         android:layout_marginStart="15dp"
@@ -23,7 +23,7 @@
         android:onClick="onInventoryClick" />
 
     <Button
-        android:text="@string/contact_us"
+        android:text="@string/inv_add"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_marginStart="15dp"
